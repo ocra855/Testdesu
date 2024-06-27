@@ -1,17 +1,5 @@
 {
-  "name": "Testdayo",
-  "icons": [
-    {
-      "src": "img.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "img.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ],
+  "name": "Testdayo",  
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#FFFFFF",
