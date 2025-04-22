@@ -61,5 +61,42 @@
     <li><a href="https://example.com/aiueo" target="_blank">あいうえお</a></li>
     <li><a href="https://example.com/kakikukeko" target="_blank">かきくけこ</a></li>
   </ul>
+      <script>
+          if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/color-name/sw.js').then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }, function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    });
+  }
+        function divideBy1240(numberId) {
+            var number = document.getElementById(numberId).value;
+            var result = 1239.842 / number;
+            if (!isNaN(result) && isFinite(result)) {
+                result = result.toFixed(4); // 少数第5位を四捨五入し、少数第4位まで表示
+                var additionalText1 = "(eV)"; // 追加するテキスト
+                var additionalText2 = "(nm)"; // 追加するテキスト
+                var resultText = "結果: " + result;
+                if (numberId === "number1") {
+                    resultText += additionalText1;
+                } else if (numberId === "number2") {
+                    resultText += additionalText2;
+                }
+                document.getElementById("result" + numberId.slice(-1)).innerHTML = resultText;
+                document.getElementById("result" + numberId.slice(-1)).classList.remove("initial-text");
+            } else {
+                document.getElementById("result" + numberId.slice(-1)).innerHTML = "結果: 入力値が無効です";
+                document.getElementById("result" + numberId.slice(-1)).classList.add("initial-text");
+            }
+        }
+
+        window.onload = function() {
+            document.getElementById("result1").classList.add("initial-text");
+            document.getElementById("result2").classList.add("initial-text");
+        };
+    </script>
+  
 </body>
 </html>
