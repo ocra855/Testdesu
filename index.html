@@ -1,40 +1,72 @@
 <!DOCTYPE html>
 <html lang="ja">
-		<link rel="mainfest" href="mainfest.json">
 <head>
-	<meta charset="UTF-8">
-	<title>Testdayo</title>
-	<style>
-	body{ font-size:14pt; font-weight:plain; }
-	h1  { color:white; font-size:24pt; background-color:red; }
-	#canvas{
-		background-color:white;
-		border:1px; solid gray;
-	}
-	</style>
-	<script>
-if ('serviceWorker' in navigator) {
-	window.addEventListener('load', () => {
-	navigator.serviceWorker.register('sw.js').then(registration => {
-	console.log('ServiceWorker registration successful with scope: ', registration.scope);
-	}, err => {
-	console.log('ServiceWorker registration failed: ', err);
-	}).catch(err => {
-	console.log(err)
-	});
-	});
-}
-</script>
+  <meta charset="UTF-8">
+  <title>サイトまとめ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3498db">
+
+  <!-- PWA用 -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(function(reg) {
+        console.log('Service Worker registered.', reg);
+      });
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 40px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    li {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 16px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      transition: box-shadow 0.2s;
+    }
+
+    li:hover {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    a {
+      text-decoration: none;
+      color: #3498db;
+      font-size: 18px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
-
-   <body>
-        <h1>サイトまとめ</h1>
-        <ul>
-            <li><a href="https://google.com" target="_blank">google</a></li>
-            <li><a href="https://www.youtube.com/" target="_blank">youtube</a></li>
-        </ul>
-
-        <div class="footer">&copy;まとめ 2025</div>
-    </body>
-				
+<body>
+  <h1>サイトまとめ</h1>
+  <ul>
+    <li><a href="https://example.com/aiueo" target="_blank">あいうえお</a></li>
+    <li><a href="https://example.com/kakikukeko" target="_blank">かきくけこ</a></li>
+  </ul>
+</body>
 </html>
