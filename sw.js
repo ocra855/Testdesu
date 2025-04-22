@@ -1,5 +1,5 @@
 var CACHE_NAME = 'pwa-sample-caches';
-var urlsToCache = 'Testdesu';
+var urlsToCache =  ['./index.html'];
 
 // インストール処理
 self.addEventListener('install', function(event) {
