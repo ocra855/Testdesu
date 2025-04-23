@@ -126,6 +126,23 @@
 		
 		<button onclick="changeVideo('https://your-worker-name.workers.dev/?url=http://luong.utako.moe/kansaitv/index.m3u8')">関西テレビ</button>
 
+
+<video id="video" controls width="100%" autoplay></video>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+  const video = document.getElementById('video');
+  const url = 'https://change-14.ocra855.workers.dev/?url=http://luong.utako.moe/kansaitv/index.m3u8';
+
+  if (Hls.isSupported()) {
+    const hls = new Hls();
+    hls.loadSource(url);
+    hls.attachMedia(video);
+  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+    video.src = url;
+  }
+</script>
+
+
   <script>
     const video = document.getElementById('videoPlayer');
 
