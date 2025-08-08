@@ -18,140 +18,156 @@
 		});
 }
     </script>
-    <title>サイトまとめ</title>
-    <style>
+  <title>IPTV チャンネル再生</title>
+  <style>
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --card-color: #fff;
+      --border-color: #ddd;
+      --hover-bg: #eef;
+    }
+
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #eee;
+      --card-color: #2c2c2c;
+      --border-color: #444;
+      --hover-bg: #333;
+    }
+
     body {
       font-family: sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      padding: 40px;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 20px;
       margin: 0;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     h1 {
       text-align: center;
-      color: #2c3e50;
     }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    li {
-      background-color: #fff;
-      border: 1px solid #ddd;
-      padding: 16px;
-      margin-bottom: 12px;
-      border-radius: 8px;
-      transition: box-shadow 0.2s;
-    }
-
-    li:hover {
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    a {
-      text-decoration: none;
-      color: #3498db;
-      font-size: 18px;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-				
-				
-				    video {
-      width: 100%;
-      max-width: 600px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
-    .video-list {
-      margin-top: 20px;
-    }
-    .video-list button {
+    #toggle-darkmode {
       display: block;
-      width: 100%;
-      max-width: 600px;
       margin: 10px auto;
-      padding: 12px;
+      padding: 10px 20px;
       font-size: 16px;
-      border: none;
-      background-color: #3498db;
-      color: white;
+      background: var(--card-color);
+      color: var(--text-color);
+      border: 1px solid var(--border-color);
       border-radius: 6px;
       cursor: pointer;
     }
-    .video-list button:hover {
-      background-color: #2980b9;
+
+    video {
+      display: block;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 640px;
+      border-radius: 8px;
     }
 
-    </style>
+    #channel-list {
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 0;
+      margin: 20px auto;
+      max-width: 600px;
+      list-style: none;
+    }
 
+    #channel-list li {
+      background-color: var(--card-color);
+      border: 1px solid var(--border-color);
+      padding: 16px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    #channel-list li:hover {
+      background-color: var(--hover-bg);
+    }
+  </style>
 </head>
-<body>
-  <h1>サイトまとめ</h1>
-  <ul>
-    <li><a href="https://youtube.com">あいうえお</a></li>
-    <li><a href="https://youtube.com" target="_blank">かきくけこb</a></li>
-    <li><a href="http://luong.utako.moe/kansaitv/index.m3u8">かん</a></li>
-    <li><a href="http://luong.utako.moe/kansaitv/index.m3u8" target="_blank">かんb</a></li>
+<!-- 最初から class="dark" を付ける -->
+<body class="dark">
+  <h1>IPTV チャンネル再生</h1>
+  <button id="toggle-darkmode">☀️ ライトモードに切替</button>
+
+  <!-- 動画プレイヤー -->
+  <video id="player" controls autoplay>
+    <source id="videoSource" src="" type="application/x-mpegURL">
+    お使いのブラウザは video タグに対応していません。
+  </video>
+
+  <!-- チャンネル一覧 -->
+  <ul id="channel-list">
+    <li>チャンネルを読み込み中...</li>
   </ul>
 
-	  <video id="liveVideo" controls playsinline>
-    <!-- ここに HLS 等のライブURLを指定 -->
-    <source src="http://luong.utako.moe/kansaitv/index.m3u8">
-
-  </video>
-
-
-  <h1>動画まとめ</h1>
-  <video id="videoPlayer" controls playsinline>
-    <source src="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8" type="application/x-mpegURL">
-    お使いのブラウザは動画の再生に対応していません。
-  </video>
-
-  <div class="video-list">
-    <button onclick="changeVideo('https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8')">動画1（サンプルHLS）</button>
-    <button onclick="changeVideo('https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8')">動画2（Sintel）</button>
-    <button onclick="changeVideo('http://luong.utako.moe/kansaitv/index.m3u8')">動画3（ライブテスト）</button>
-				
-				<button onclick="changeVideo('http://luong.utako.moe/kansaitv/index.m3u8')">てれび</button>
-  </div>
-		
-		
-		<button onclick="changeVideo('https://your-worker-name.workers.dev/?url=http://luong.utako.moe/kansaitv/index.m3u8')">関西テレビ</button>
-
-
-<video id="video" controls width="100%" autoplay></video>
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-<script>
-  const video = document.getElementById('video');
-  const url = 'https://change-14.ocra855.workers.dev/?url=http://luong.utako.moe/kansaitv/index.m3u8';
-
-  if (Hls.isSupported()) {
-    const hls = new Hls();
-    hls.loadSource(url);
-    hls.attachMedia(video);
-  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-    video.src = url;
-  }
-</script>
-
-
   <script>
-    const video = document.getElementById('videoPlayer');
+    // チャンネル読み込み
+    async function loadChannels() {
+      const url = "https://raw.githubusercontent.com/luongz/iptv-jp/main/jp_clean.m3u";
+      try {
+        const res = await fetch(url);
+        const text = await res.text();
+        const lines = text.split("\n");
 
-    function changeVideo(url) {
-      video.src = url;
-      video.load();
-      video.play();
+        const channels = [];
+        for (let i = 0; i < lines.length; i++) {
+          if (lines[i].startsWith("#EXTINF")) {
+            const name = lines[i].split(",").pop().trim();
+            const streamUrl = lines[i + 1]?.trim();
+            if (streamUrl && streamUrl.startsWith("http")) {
+              channels.push({ name, url: streamUrl });
+            }
+          }
+        }
+
+        const usefulChannels = channels.slice(4);
+        const list = document.getElementById("channel-list");
+        list.innerHTML = "";
+
+        usefulChannels.forEach(channel => {
+          const li = document.createElement("li");
+          li.textContent = channel.name;
+          li.onclick = () => {
+            const source = document.getElementById("videoSource");
+            const player = document.getElementById("player");
+            source.src = channel.url;
+            player.load();
+            player.play();
+          };
+          list.appendChild(li);
+        });
+
+      } catch (e) {
+        console.error("読み込み失敗", e);
+        document.getElementById("channel-list").innerHTML =
+          "<li>チャンネルの読み込みに失敗しました。</li>";
+      }
     }
+
+    loadChannels();
+
+    // 🌗 ダークモード切替
+    const toggleButton = document.getElementById("toggle-darkmode");
+    toggleButton.onclick = () => {
+      const body = document.body;
+      body.classList.toggle("dark");
+
+      toggleButton.textContent = body.classList.contains("dark")
+        ? "☀️ ライトモードに切替"
+        : "🌙 ダークモードに切替";
+    };
   </script>
+      
+
 
 
 </body>
