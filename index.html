@@ -103,6 +103,18 @@
     <source id="videoSource" src="" type="application/x-mpegURL">
     お使いのブラウザは video タグに対応していません。
   </video>
+		
+		  <!-- 動画プレイヤー -->
+  <video id="player" controls autoplay>
+    <source id="videoSource" src="" type="application/x-mpegURL">
+    お使いのブラウザは video タグに対応していません。
+  </video>
+
+  <!-- 全画面・PiPボタン -->
+  <div id="video-controls">
+    <button class="control-btn" id="fullscreen-btn">⛶ 全画面</button>
+    <button class="control-btn" id="pip-btn">📺 PiP</button>
+  </div>
 
   <!-- チャンネル一覧 -->
   <ul id="channel-list">
@@ -167,6 +179,29 @@
     };
   </script>
       
+    // 全画面表示
+    document.getElementById("fullscreen-btn").onclick = () => {
+      const video = document.getElementById("player");
+      if (video.requestFullscreen) {
+        video.requestFullscreen();
+      } else if (video.webkitRequestFullscreen) {
+        video.webkitRequestFullscreen();
+      }
+    };
+
+    // PiPモード
+    document.getElementById("pip-btn").onclick = async () => {
+      const video = document.getElementById("player");
+      if (document.pictureInPictureElement) {
+        await document.exitPictureInPicture();
+      } else {
+        try {
+          await video.requestPictureInPicture();
+        } catch (err) {
+          alert("PiPがサポートされていないか、動画再生中ではありません。");
+        }
+      }
+    };
 
 
 
