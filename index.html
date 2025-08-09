@@ -18,6 +18,7 @@
 		});
 }
     </script>
+
   <title>IPTV チャンネル再生</title>
   <style>
     :root {
@@ -27,7 +28,6 @@
       --border-color: #ddd;
       --hover-bg: #eef;
     }
-
     body.dark {
       --bg-color: #1e1e1e;
       --text-color: #eee;
@@ -35,7 +35,6 @@
       --border-color: #444;
       --hover-bg: #333;
     }
-
     body {
       font-family: sans-serif;
       background-color: var(--bg-color);
@@ -44,11 +43,9 @@
       margin: 0;
       transition: background-color 0.3s, color 0.3s;
     }
-
     h1 {
       text-align: center;
     }
-
     #toggle-darkmode {
       display: block;
       margin: 10px auto;
@@ -60,7 +57,6 @@
       border-radius: 6px;
       cursor: pointer;
     }
-
     video {
       display: block;
       margin: 20px auto;
@@ -68,8 +64,7 @@
       max-width: 640px;
       border-radius: 8px;
     }
-				
-				    #video-controls {
+    #video-controls {
       text-align: center;
       margin-bottom: 20px;
     }
@@ -82,8 +77,7 @@
       border: 1px solid var(--border-color);
       border-radius: 6px;
       cursor: pointer;
-    
-
+    }
     #channel-list {
       max-height: 400px;
       overflow-y: auto;
@@ -92,7 +86,6 @@
       max-width: 600px;
       list-style: none;
     }
-
     #channel-list li {
       background-color: var(--card-color);
       border: 1px solid var(--border-color);
@@ -102,29 +95,16 @@
       cursor: pointer;
       transition: background-color 0.2s;
     }
-
     #channel-list li:hover {
       background-color: var(--hover-bg);
     }
   </style>
 </head>
-<!-- 最初から class="dark" を付ける -->
 <body class="dark">
   <h1>IPTV チャンネル再生</h1>
   <button id="toggle-darkmode">☀️ ライトモードに切替</button>
 
   <!-- 動画プレイヤー -->
-<div style="max-width:800px; margin:auto;">
-    <video id="player" controls autoplay style="width:100%; height:auto; background:black;">
-        <source src="" type="application/x-mpegURL">
-        お使いのブラウザは video タグに対応していません。
-    </video>
-    <div style="margin-top:10px; text-align:center;">
-        <button id="fullscreenBtn">全画面</button>
-        <button id="pipBtn">PIP</button>
-    </div>
-</div>
-		  <!-- 動画プレイヤー -->
   <video id="player" controls autoplay>
     <source id="videoSource" src="" type="application/x-mpegURL">
     お使いのブラウザは video タグに対応していません。
@@ -184,21 +164,18 @@
           "<li>チャンネルの読み込みに失敗しました。</li>";
       }
     }
-
     loadChannels();
 
-    // 🌗 ダークモード切替
+    // ダークモード切替
     const toggleButton = document.getElementById("toggle-darkmode");
     toggleButton.onclick = () => {
       const body = document.body;
       body.classList.toggle("dark");
-
       toggleButton.textContent = body.classList.contains("dark")
         ? "☀️ ライトモードに切替"
         : "🌙 ダークモードに切替";
     };
-  </script>
-      
+
     // 全画面表示
     document.getElementById("fullscreen-btn").onclick = () => {
       const video = document.getElementById("player");
@@ -222,7 +199,7 @@
         }
       }
     };
-
+  </script>
 
 
 </body>
