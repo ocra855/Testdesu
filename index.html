@@ -99,11 +99,16 @@
   <button id="toggle-darkmode">☀️ ライトモードに切替</button>
 
   <!-- 動画プレイヤー -->
-  <video id="player" controls autoplay>
-    <source id="videoSource" src="" type="application/x-mpegURL">
-    お使いのブラウザは video タグに対応していません。
-  </video>
-		
+<div style="max-width:800px; margin:auto;">
+    <video id="player" controls autoplay style="width:100%; height:auto; background:black;">
+        <source src="" type="application/x-mpegURL">
+        お使いのブラウザは video タグに対応していません。
+    </video>
+    <div style="margin-top:10px; text-align:center;">
+        <button id="fullscreenBtn">全画面</button>
+        <button id="pipBtn">PIP</button>
+    </div>
+</div>
 		  <!-- 動画プレイヤー -->
   <video id="player" controls autoplay>
     <source id="videoSource" src="" type="application/x-mpegURL">
